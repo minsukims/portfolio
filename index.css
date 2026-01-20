@@ -129,18 +129,72 @@ a {
 /* 배너들 */
 #main > .article1 {
   grid-area: article1;
-  background-color: #b0b4b6;
+  background-image: url("slider/banner1.jpg");
+  background-size: cover;
+  background-position: center;
   aspect-ratio: 3/5;
 }
 #main > .article2 {
   grid-area: article2;
-  background-color: #c5cacc;
+  background-image: url("slider/banner2.jpg");
+  background-size: cover;
+  background-position: center;
   aspect-ratio: 3/5;
 }
 #main > .article3 {
   grid-area: article3;
-  background-color: #cddae0;
+  background-image: url("slider/banner3.jpg");
+  background-size: cover;
+  background-position: center;
   aspect-ratio: 3/5;
+}
+#footer {
+  background-color: #333;
+  color: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+}
+
+.footer_wrap {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 20px;
+}
+
+.footer_grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.footer_logo a {
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+}
+
+.footer_info p {
+  margin-bottom: 5px;
+}
+
+.footer_links a {
+  display: block;
+  margin-bottom: 5px;
+  color: #b1aeae;
+  text-decoration: none;
+}
+
+.footer_links a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer_copy {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #aaa;
 }
 
 /* 미디어쿼리 */
@@ -192,37 +246,73 @@ a {
   }
   #main {
     grid-template-areas:
-      "main article1"
-      "article2 article3";
-    grid-template-columns: 50% 50%;
-    grid-template-rows: auto 1fr;
-  }
-  #main > .article1 {
-    aspect-ratio: 3/5;
-  }
-  #main > .article2 {
-    aspect-ratio: 3/5;
-  }
-  #main > .article3 {
-    aspect-ratio: 3/5;
-  }
-}
-@media (max-width: 480px) {
-  #main {
-    grid-template-areas:
       "main"
       "article1"
       "article2"
       "article3";
     grid-template-columns: 100%;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto auto auto;
+  }
+  #main > .article1,
+  #main > .article2,
+  #main > .article3 {
+    aspect-ratio: auto;
+    min-height: 200px;
+  }
+  .slide {
+    position: relative;
+  }
+  .slide > .sale-link {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10%;
+    height: 30%;
+    font-size: clamp(12px, 1.2vw, 16px);
+    background-color: #e4d9d9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .slide > .sale-link:hover {
+    border: 2px solid green;
+  }
+  .slide > .sale-link > a {
+    font-size: 1em;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .slide > .sale-link > a:hover {
+    color: rgb(29, 28, 28);
+    text-decoration: underline;
+  }
+  .footer_wrap {
+    width: 96%;
+    padding: 20px 10px 10px;
+  }
+  .footer_grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+  }
+  .footer_links a {
+    display: inline-block;
+    margin: 0 10px 5px 0;
+  }
+}
+@media (max-width: 480px) {
+  #main > .article1,
+  #main > .article2,
+  #main > .article3 {
+    aspect-ratio: auto;
+    min-height: 160px;
   }
   .slider.s1,
   .slider.s2 {
     background-position: left center;
   }
-
-  /* 3번: 마지막 문구(오른쪽) */
   .slider.s3 {
     background-position: right center;
   }
